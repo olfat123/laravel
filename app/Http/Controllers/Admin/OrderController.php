@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Order;
 use Illuminate\Http\Request;
-
+use App\DataTables\OrdersDataTable;
 class OrderController extends Controller
 {
     /**
@@ -13,9 +13,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(OrdersDataTable $order)
     {
-        //
+        return $order->render('admin.orders.index',['title' =>'Orders Control']);
     }
 
     /**

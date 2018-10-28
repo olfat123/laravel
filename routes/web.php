@@ -18,5 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/login', 'Admin\AdminAuth@login');
-Route::resource('/admin/user', 'Admin\UserController');
+Route::group(['namespace'=>'Admin'],function(){
+
+	Route::get('/admin/login', 'AdminAuth@login');
+	Route::resource('/admin/users', 'UserController');
+	Route::resource('/admin/products', 'ProductController');
+	Route::resource('/admin/orders', 'OrderController');
+
+});

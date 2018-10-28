@@ -36,8 +36,8 @@
 <script src="{{ url('/') }}/design/adminlte/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <script src="{{ url('/') }}/design/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{{ url('/') }}/design/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="{{ url('') }}/vendor/datatables/buttons.server-side.js"></script>
 <script src="{{ url('/') }}/design/adminlte/bower_components/datatables.net/js/dataTables.buttons.min.js"></script>
+<script src="{{ url('') }}/vendor/datatables/buttons.server-side.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

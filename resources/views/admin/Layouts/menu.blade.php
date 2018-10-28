@@ -197,6 +197,27 @@
               </li>
             </ul>
           </li>
+
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  
+              <span class="hidden-xs"><i class="fa fa-globe"></i> {{session('lang')}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-body">
+                
+                <a href="/admin/lang/en/"><i class="fa fa-flag"></i>En</a>
+                
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <a href="/admin/lang/ar/"><i class="fa fa-flag"></i>Ar</a>
+                <!-- /.row -->
+              </li>
+              
+            </ul>
+          </li>
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

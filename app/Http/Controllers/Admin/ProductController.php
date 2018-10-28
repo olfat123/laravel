@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\product;
 use Illuminate\Http\Request;
-
+use App\DataTables\ProductsDataTable;
 class ProductController extends Controller
 {
     /**
@@ -13,9 +13,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ProductsDataTable $product)
     {
-        //
+        return $product->render('admin.products.index',['title' =>'Products Control']);
     }
 
     /**
