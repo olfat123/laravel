@@ -16,6 +16,9 @@ Route::group(['namespace'=>'Admin'],function(){
 			Route::resource('/admin/users', 'UserController');
 			Route::resource('/admin/products', 'ProductController');
 			Route::resource('/admin/orders', 'OrderController');
+
+			Route::get('/admin/settings','Settings@setting');
+			Route::post('/admin/settings','Settings@save_setting');
 			Route::get('/admin/lang/{lang}', function($lang){
 				if(session()->has('lang')){
 					session()->forget('lang');

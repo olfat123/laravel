@@ -15,11 +15,10 @@ class Lang
      */
     public function handle($request, Closure $next)
     {
-        if(session()->has('lang')){
-            app()->setlocale(session('lang'));
-        }else{
-            app()->setlocale('en');
-        }       
+        
+            app()->setlocale(lang());
+        
+              
         
         return $next($request);
     }
