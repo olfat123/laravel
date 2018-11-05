@@ -23,10 +23,18 @@
 			<div class="form-group">
 				{!! Form::label('logo',_('admin.logo'))!!}
 				{!! Form::file('logo',['class'=>'form-control'])!!}
+				@if(!empty(setting()->logo))
+					<img src="{{Storage::url(setting()->logo)}}" />
+				@endif
+
+			
 			</div>
 			<div class="form-group">
 				{!! Form::label('icon',_('admin.icon'))!!}
 				{!! Form::file('icon',['class'=>'form-control'])!!}
+				@if(!empty(setting()->icon))
+					<img src="{{Storage::url(setting()->icon)}}" />
+				@endif
 			</div>
 			<div class="form-group">
 				{!! Form::label('description',_('admin.description'))!!}

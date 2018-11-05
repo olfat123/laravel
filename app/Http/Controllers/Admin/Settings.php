@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Setting;
 use Illuminate\Http\Request;
-use Validator;
+use Storage;
+use Up;
+
 class Settings extends Controller
 {
     /**
@@ -24,7 +26,7 @@ class Settings extends Controller
      */
     public function save_setting()
     {
-        $this->validate(request(),
+        $data = $this->validate(request(),
             [
                 'logo'=> validate_image(),
                 'icon'=>validate_image()
@@ -36,7 +38,17 @@ class Settings extends Controller
             ]);
         $data = request()->except(['_token', '_method']);
         if(request()->hasFile('logo')){
-
+            !empty(setting()->logo) ? Storage::delete(setting()->logo):'';
+            $data['logo'] = Up::upload([
+                    'new_name' => '',
+                    'file' => 'logo',
+                    'path' => 'settings',
+                    'upload_type' => 'single'
+            ]);
+        }
+        if(request()->hasFile('icon')){
+            !empty(setting()->icon) ? Storage::delete(setting()->icon):'';
+            $data['icon'] = request()->file('icon')->store('settings');
         }
         Setting::orderBy('id','desc')->update($data);
         session()->flash('success', trans('admin.record_updated'));

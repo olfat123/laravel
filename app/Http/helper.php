@@ -20,9 +20,9 @@ if (!function_exists('lang')) {
 if (!function_exists('validate_image')) {
 	function validate_image($ext = null){
 		if($ext === null){
-			return 'images|mimes:jpg,jpeg,png,gif';
+			return 'image|mimes:jpg,jpeg,png,gif';
 		}else{
-			return 'images|mimes:'.$ext;
+			return 'image|mimes:'.$ext;
 		}
 		
 	}
