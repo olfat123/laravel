@@ -16,7 +16,8 @@ Route::group(['namespace'=>'Admin'],function(){
 			Route::resource('/admin/users', 'UserController');
 			Route::resource('/admin/products', 'ProductController');
 			Route::resource('/admin/orders', 'OrderController');
-
+			Route::resource('/admin/countries', 'CountryController');
+			//Route::get('/admin/countries/create', 'CountryController@create');
 			Route::get('/admin/settings','Settings@setting');
 			Route::post('/admin/settings','Settings@save_setting');
 			Route::get('/admin/lang/{lang}', function($lang){
