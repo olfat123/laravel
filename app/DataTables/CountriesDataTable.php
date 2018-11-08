@@ -16,9 +16,11 @@ class CountriesDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('action', 'Countriesdatatable.action')
+            ->addColumn('edit', '<a href="/admin/countries/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
+            ->addColumn('delete', '<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>')
             ->rawColumns([
-                'action'
+                'edit',
+                'delete'
             ]);
     }
 
@@ -111,9 +113,18 @@ class CountriesDataTable extends DataTable
                 'title'=>'Updated at'
             ],
             [
-                'name'=>'action',
-                'data'=>'action',
-                'title'=>'Actions',
+                'name'=>'edit',
+                'data'=>'edit',
+                'title'=>'Edit',
+                'printable' => false,
+                'exportable' => false,
+                'sortable' => false,
+                'searchable'=> false
+            ],
+            [
+                'name'=>'delete',
+                'data'=>'delete',
+                'title'=>'Delete',
                 'printable' => false,
                 'exportable' => false,
                 'sortable' => false,

@@ -5,6 +5,11 @@ if(!function_exists('setting')){
 		return \App\Setting::orderBy('id', 'desc')->first();
 	}
 }
+if(!function_exists('country')){
+	function country(){
+		return \App\Country::orderBy('id', 'desc')->first();
+	}
+}
 
 if (!function_exists('lang')) {
 	function lang(){

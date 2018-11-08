@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Country;
 use Illuminate\Http\Request;
 use App\DataTables\CountriesDataTable;
+use Storage;
+use Up;
 class CountryController extends Controller
 {
     /**
@@ -36,7 +38,37 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate(request(),
+            ['country_name_ar' => 'required',
+             'country_name_en' => 'required',
+             'mob' => 'required',
+             'code' => 'required',
+             'logo' => 'sometimes|nullable|'.validate_image(),            
+
+            ],
+            [],
+            [
+             'country_name_ar' => _('admin.country_name_ar'),
+             'country_name_en' => _('admin.country_name_en'),
+             'mob' => 'admin.country_mob',
+             'code' => 'admin.country_code',
+             'logo' => 'country_logo'
+            ]
+        );
+        if(request()->hasFile('logo')){
+            
+            $data['logo'] = Up::upload([
+                    'new_name' => '',
+                    'file' => 'logo',
+                    'path' => 'countries',
+                    'upload_type' => 'single',
+                    'delete_file' => '',
+            ]);
+        }
+
+        Country::create($data);
+        session()->flash('success',trans('admin.record_added'));
+        return redirect('/admin/countries');
     }
 
     /**
@@ -56,9 +88,11 @@ class CountryController extends Controller
      * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit($id)
     {
-        //
+        $country = Country::find($id);
+        $title = _('admin.edit');
+        return view('admin.countries.edit', compact('country','title'));
     }
 
     /**
@@ -68,9 +102,41 @@ class CountryController extends Controller
      * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Country $country)
+    public function update(Request $r,  $id)
     {
-        //
+        $data = $this->validate(request(),
+            [
+             'country_name_ar' => 'required',
+             'country_name_en' => 'required',
+             'mob' => 'required',
+             'code' => 'required',
+             'logo' => 'required|'.validate_image(),            
+
+            ],
+            [],
+            [
+             'country_name_ar' => _('admin.country_name_ar'),
+             'country_name_en' => _('admin.country_name_en'),
+             'mob' => _('admin.country_mob'),
+             'code' => _('admin.country_code'),
+             'logo' => _('country_logo'),
+            ]
+        );
+
+        if(request()->hasFile('logo')){
+            
+            $data['logo'] = Up::upload([
+                'file' => 'logo',
+                'path' => 'countries',
+                'upload_type' => 'single',
+                'delete_file' => Country::find($id)->logo,
+            ]);
+        }
+
+        Country::where('id', $id)->update($data);
+        session()->flash('success', _('admin.update_record'));
+        return redirect('/admin/countries');
+
     }
 
     /**
