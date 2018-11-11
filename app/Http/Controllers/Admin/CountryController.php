@@ -126,6 +126,7 @@ class CountryController extends Controller
         if(request()->hasFile('logo')){
             
             $data['logo'] = Up::upload([
+                'new_name' => '',
                 'file' => 'logo',
                 'path' => 'countries',
                 'upload_type' => 'single',
@@ -145,8 +146,28 @@ class CountryController extends Controller
      * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        //
+        $countries = Country::find($id);
+        Storage::delete($countries->logo);
+        $countries->delete();
+        session()->flash('success', _('admin.deleted_record'));
+        return redirect('/admin/countries');
+    }
+
+    public function multi_delete() {
+        if(is_array(request('item'))){
+            foreach (request('item') as $id) {
+                $countries = Country::find($id);
+                Storage::delete($countries->logo);
+                $countries->delete();
+            }
+        }else{
+                $countries = Country::find(request('item'));
+                Storage::delete($countries->logo);
+                $countries->delete();
+        }
+        session()->flash('success', _('admin.deleted_record'));
+        return redirect('/admin/countries');
     }
 }
