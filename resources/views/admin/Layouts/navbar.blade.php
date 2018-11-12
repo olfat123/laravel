@@ -52,8 +52,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li class="active"><a href="/admin/settings"><i class="fa fa-circle-o"></i> Settings</a></li>
+           
           </ul>
         </li>
         <li class="treeview">
@@ -97,7 +97,7 @@
             
           </ul>
         </li>
-         <li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Cities</span>
@@ -108,6 +108,20 @@
           <ul class="treeview-menu">
             <li><a href="/admin/cities"><i class="fa fa-circle-o"></i> Cities List</a></li>
             <li><a href="/admin/cities/create"><i class="fa fa-circle-o"></i> Add New</a></li>
+            
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>States</span>
+            <span class="pull-right-container">              
+              <i class="fa fa-angle-left pull-right"></i>            
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/states"><i class="fa fa-circle-o"></i> States List</a></li>
+            <li><a href="/admin/states/create"><i class="fa fa-circle-o"></i> Add New</a></li>
             
           </ul>
         </li>

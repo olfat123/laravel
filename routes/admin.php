@@ -17,6 +17,7 @@ Route::group(['namespace'=>'Admin'],function(){
 			Route::resource('/admin/products', 'ProductController');
 			Route::resource('/admin/orders', 'OrderController');
 			Route::resource('/admin/cities', 'CityController');
+			Route::resource('/admin/states', 'StateController');
 			Route::resource('/admin/countries', 'CountryController');			
 			Route::get('/admin/settings','Settings@setting');
 			Route::post('/admin/settings','Settings@save_setting');

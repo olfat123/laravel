@@ -4,7 +4,7 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">
-        {{__('admin.cities')}}
+        {{__('admin.states')}}
       </h3> 
         
         {{ $dataTable->table([

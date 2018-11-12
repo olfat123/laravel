@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\City;
+use App\State;
 use Yajra\DataTables\Services\DataTable;
 
-class CitiesDataTable extends DataTable
+class StatesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,7 +16,7 @@ class CitiesDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('edit', '<a href="/admin/cities/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
+            ->addColumn('edit', '<a href="/admin/states/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
             ->addColumn('delete', '<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>')
             ->rawColumns([
                 'edit',
@@ -30,9 +30,9 @@ class CitiesDataTable extends DataTable
      * @param \App\Country $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(City $model)
+    public function query(State $model)
     {
-        return City::query()->with('country_id')->select('cities.*');
+        return State::query()->with('country_id')->with('city_id')->select('states.*');
 
         //$model->newQuery()->select('id', 'city_name_ar', 'city_name_en','country_id', 'created_at', 'updated_at');
     }
@@ -58,7 +58,7 @@ class CitiesDataTable extends DataTable
                             ['extend' =>'csv','className' =>'btn btn-info','text'=>'CSV Page'],
                             ['extend' =>'excel','className' =>'btn btn-info','text'=>'Excel Page'],
                             ['extend' =>'reload','className' =>'btn btn-info','text'=>'Reload Page'],
-                            ['text' => '<i class="fa fa-plus"></i>  Add City </a>','className' =>'btn btn-info','action'=>"function(){
+                            ['text' => '<i class="fa fa-plus"></i>  Add State </a>','className' =>'btn btn-info','action'=>"function(){
 
                             	window.location.href='".\URL::current()."/create';
                             }"],
@@ -114,19 +114,24 @@ class CitiesDataTable extends DataTable
                 'title'=>'ID'
             ],
             [
-                'name'=>'city_name_ar',
-                'data'=>'city_name_ar',
+                'name'=>'state_name_ar',
+                'data'=>'state_name_ar',
                 'title'=>'Arabic Name'
             ],
             [
-                'name'=>'city_name_en',
-                'data'=>'city_name_en',
+                'name'=>'state_name_en',
+                'data'=>'state_name_en',
                 'title'=>'English Name'
             ],
             [
                 'name'=>'country_id.country_name_'.session('lang'),
                 'data'=>'country_id.country_name_'.session('lang'),
                 'title'=>'Country'
+            ],
+            [
+                'name'=>'city_id.city_name_'.session('lang'),
+                'data'=>'city_id.city_name_'.session('lang'),
+                'title'=>'City'
             ],
                       
             [
@@ -169,6 +174,6 @@ class CitiesDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Cities_' . date('YmdHis');
+        return 'States_' . date('YmdHis');
     }
 }
