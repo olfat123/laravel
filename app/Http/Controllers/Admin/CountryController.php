@@ -58,7 +58,7 @@ class CountryController extends Controller
         if(request()->hasFile('logo')){
             
             $data['logo'] = Up::upload([
-                    'new_name' => '',
+                    'new_name' => 'country_flag',
                     'file' => 'logo',
                     'path' => 'countries',
                     'upload_type' => 'single',
@@ -126,9 +126,10 @@ class CountryController extends Controller
         if(request()->hasFile('logo')){
             
             $data['logo'] = Up::upload([
-                'file' => 'logo',
-                'path' => 'countries',
-                'upload_type' => 'single',
+                    'new_name' => 'country_flag',
+                    'file' => 'logo',
+                    'path' => 'countries',
+                    'upload_type' => 'single',
                 'delete_file' => Country::find($id)->logo,
             ]);
         }

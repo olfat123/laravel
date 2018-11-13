@@ -16,11 +16,13 @@ class CountriesDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+            ->addColumn('checkbox', 'admin.countries.btn.checkbox')
             ->addColumn('edit', '<a href="/admin/countries/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
             ->addColumn('delete', '<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>')
             ->rawColumns([
                 'edit',
-                'delete'
+                'delete',
+                'checkbox'
             ]);
     }
 
@@ -73,6 +75,15 @@ class CountriesDataTable extends DataTable
     {
         return [
             [
+                'name'=>'checkbox',
+                'data'=>'checkbox',
+                'title'=>'<input type="checkbox" class="check_all" onclick="check_all()"/>',
+                'printable' => false,
+                'exportable' => false,
+                'orderable' => false,
+                'searchable'=> false
+            ],
+            [
                 'name'=>'id',
                 'data'=>'id',
                 'title'=>'ID'
@@ -118,7 +129,7 @@ class CountriesDataTable extends DataTable
                 'title'=>'Edit',
                 'printable' => false,
                 'exportable' => false,
-                'sortable' => false,
+                'orderable' => false,
                 'searchable'=> false
             ],
             [
@@ -127,7 +138,7 @@ class CountriesDataTable extends DataTable
                 'title'=>'Delete',
                 'printable' => false,
                 'exportable' => false,
-                'sortable' => false,
+                'orderable' => false,
                 'searchable'=> false
             ],
 

@@ -29,7 +29,17 @@
   <link rel="stylesheet" href="{{ url('/') }}/design/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ url('/') }}/design/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  
+  <script type="text/javascript">
+    function check_all(){
+      $('input[class="item_checkbox"]:checkbox').each(function(){
+        if($('input[class="check_all"]:checkbox:checked').length == 0 ){
+          $(this).prop('checked',false);         
+        }else{         
+          $(this).prop('checked',true);
+        }
+      });
+    }
+  </script>
   <!-- jQuery 3 -->
 <script src="{{ url('/') }}/design/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
