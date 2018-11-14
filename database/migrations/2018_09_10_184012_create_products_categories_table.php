@@ -15,7 +15,13 @@ class CreateProductsCategoriesTable extends Migration
     {
         Schema::create('productsCategories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Name');
+            $table->string('name_ar');
+            $table->string('name_en');
+            $table->string('icon')->nullable();
+            $table->string('description')->nullable();            
+            $table->string('keyword')->nullable();
+            $table->integer('parent')->unsigned()->nullable();
+            $table->foreign('parent')->references('id')->on('productsCategories')->onDelete('cascade');  
             $table->timestamps();
         });
     }

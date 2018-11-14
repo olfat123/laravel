@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="{{ url('/') }}/design/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ url('/') }}/design/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url('/') }}/design/adminlte/jstree/themes/default/style.css">
+
+ 
   <script type="text/javascript">
     function check_all(){
       $('input[class="item_checkbox"]:checkbox').each(function(){

@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Country;
 use Illuminate\Http\Request;
 use App\DataTables\CountriesDataTable;
-
+use Up;
+use Storage;
 class CountryController extends Controller
 {
     /**
@@ -26,7 +27,7 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('admin/countries.create',['title'=> _('admin.addcountry')]);
+        return view('admin.countries.create',['title'=> _('admin.addcountry')]);
     }
 
     /**
@@ -125,17 +126,12 @@ class CountryController extends Controller
         if(request()->hasFile('logo')){
             
             $data['logo'] = Up::upload([
-<<<<<<< HEAD
+
                     'new_name' => 'country_flag',
                     'file' => 'logo',
                     'path' => 'countries',
-                    'upload_type' => 'single',
-=======
-                'new_name' => '',
-                'file' => 'logo',
-                'path' => 'countries',
-                'upload_type' => 'single',
->>>>>>> b9ea63f6a83990312e4c7450fee810364f04a37f
+                    'upload_type' => 'single',               
+
                 'delete_file' => Country::find($id)->logo,
             ]);
         }
