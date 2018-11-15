@@ -237,9 +237,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ url('/') }}/design/adminlte/dist/js/demo.js"></script>
 <script src="{{ url('/') }}/design/adminlte/jstree/jstree.js"></script>
-
-
-
+<script src="{{ url('/') }}/design/adminlte/jstree/jstree.wholerow.js"></script>
+<script src="{{ url('/') }}/design/adminlte/jstree/jstree.checkbox.js"></script>
 
 </body>
 </html>

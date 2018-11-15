@@ -80,7 +80,7 @@
           <ul class="treeview-menu">
             <li><a href="/admin/products"><i class="fa fa-circle-o"></i> Products List</a></li>
             <li><a href="/admin/products/create"><i class="fa fa-circle-o"></i> Add New</a></li>
-            
+            <li><a href="/admin/productsCategory"><i class="fa fa-circle-o"></i>Products Categories</a></li>
           </ul>
         </li>
         <li class="treeview">
