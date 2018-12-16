@@ -2,12 +2,12 @@
 
 if(!function_exists('setting')){
 	function setting(){
-		return \App\Setting::orderBy('id', 'desc')->first();
+		return \App\Model\Setting::orderBy('id', 'desc')->first();
 	}
 }
 if(!function_exists('country')){
 	function country(){
-		return \App\Country::orderBy('id', 'desc')->first();
+		return \App\Model\Country::orderBy('id', 'desc')->first();
 	}
 }
 

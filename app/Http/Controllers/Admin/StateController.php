@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
-use App\State;
-use App\City;
+use App\Model\State;
+use App\Model\City;
 use Illuminate\Http\Request;
 use App\DataTables\StatesDataTable;
 use Storage;

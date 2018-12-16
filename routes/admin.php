@@ -19,7 +19,8 @@ Route::group(['namespace'=>'Admin'],function(){
 			Route::resource('/admin/cities', 'CityController');
 			Route::resource('/admin/states', 'StateController');
 			Route::resource('/admin/productsCategory', 'ProductsCategoryController');
-			Route::resource('/admin/countries', 'CountryController');			
+			Route::resource('/admin/countries', 'CountryController');
+			Route::resource('/admin/colors', 'ColorController');			
 			Route::get('/admin/settings','Settings@setting');
 			Route::post('/admin/settings','Settings@save_setting');
 			Route::get('/admin/lang/{lang}', function($lang){

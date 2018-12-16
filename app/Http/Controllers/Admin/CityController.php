@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
-use App\City;
+use App\Model\City;
 use Illuminate\Http\Request;
 use App\DataTables\CitiesDataTable;
 use Storage;

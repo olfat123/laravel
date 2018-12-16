@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Order;
+use App\Model\Order;
 use Yajra\DataTables\Services\DataTable;
 
 class OrdersDataTable extends DataTable

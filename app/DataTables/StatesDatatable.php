@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\State;
+use App\Model\State;
 use Yajra\DataTables\Services\DataTable;
 
 class StatesDataTable extends DataTable
