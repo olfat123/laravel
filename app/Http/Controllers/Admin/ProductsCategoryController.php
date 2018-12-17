@@ -58,9 +58,9 @@ class ProductsCategoryController extends Controller
         if(request()->hasFile('icon')){
             
             $data['icon'] = Up::upload([
-                    'new_name' => 'country_flag',
+                    'new_name' => 'productCategory_icon',
                     'file' => 'icon',
-                    'path' => 'countries',
+                    'path' => 'productCategory',
                     'upload_type' => 'single',
                     'delete_file' => '',
             ]);
@@ -128,7 +128,7 @@ class ProductsCategoryController extends Controller
             
             $data['icon'] = Up::upload([
 
-                    'new_name' => 'country_flag',
+                    'new_name' => 'productCategory_icon',
                     'file' => 'icon',
                     'path' => 'productCategory',
                     'upload_type' => 'single',               
