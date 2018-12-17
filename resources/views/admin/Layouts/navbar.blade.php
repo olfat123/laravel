@@ -130,7 +130,20 @@
             
           </ul>
         </li>
-       
+       <li class="treeview">
+          <a href="#">
+            <i class="fa fa-files-o"></i>
+            <span>Colors</span>
+            <span class="pull-right-container">              
+              <i class="fa fa-angle-left pull-right"></i>            
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/admin/colors"><i class="fa fa-circle-o"></i> Colors List</a></li>
+            <li><a href="/admin/colors/create"><i class="fa fa-circle-o"></i> Add New</a></li>
+            
+          </ul>
+        </li>
     </section>
     <!-- /.sidebar -->
   </aside>

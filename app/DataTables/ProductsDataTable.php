@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Product;
+use App\Model\Product;
 use Yajra\DataTables\Services\DataTable;
 
 class ProductsDataTable extends DataTable

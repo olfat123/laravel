@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
-use App\Order;
+use App\Model\Order;
 use Illuminate\Http\Request;
 use App\DataTables\OrdersDataTable;
 class OrderController extends Controller

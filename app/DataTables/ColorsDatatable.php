@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Model\User;
+use App\Model\Color;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class ColorsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,7 +16,7 @@ class UsersDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('edit', '<a href="/admin/users/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
+            ->addColumn('edit', '<a href="/admin/colors/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
             ->addColumn('delete', '<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>')
             ->rawColumns([
                 'edit',
@@ -27,12 +27,13 @@ class UsersDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Country $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
-    {
-        return $model->newQuery()->select('id', 'name', 'email', 'created_at', 'updated_at');
+    public function query(Color $model)
+    {       
+
+      return $model->newQuery()->select('id', 'color_name_ar', 'color_name_en','color', 'created_at', 'updated_at');
     }
 
     /**
@@ -56,10 +57,13 @@ class UsersDataTable extends DataTable
                             ['extend' =>'csv','className' =>'btn btn-info','text'=>'CSV Page'],
                             ['extend' =>'excel','className' =>'btn btn-info','text'=>'Excel Page'],
                             ['extend' =>'reload','className' =>'btn btn-info','text'=>'Reload Page'],
-                            ['text' => '<i class="fa fa-plus"></i> Add User','className' =>'btn btn-info'],
-                        ],
-                        'initComplete' => 'function () {
-                            this.api().columns([0,1,2,3,4]).every(function () {
+                            ['text' => '<i class="fa fa-plus"></i>  Add Color </a>','className' =>'btn btn-info','action'=>"function(){
+
+                            	window.location.href='".\URL::current()."/create';
+                            }"],
+                          ],
+                            'initComplete' => 'function () {
+                                this.api().columns([1,2,3]).every(function () {
                                 var column = this;
                                 var input = document.createElement("input");
                                 $(input).appendTo($(column.footer()).empty())
@@ -109,15 +113,21 @@ class UsersDataTable extends DataTable
                 'title'=>'ID'
             ],
             [
-                'name'=>'name',
-                'data'=>'name',
-                'title'=>'Name'
+                'name'=>'color_name_ar',
+                'data'=>'color_name_ar',
+                'title'=>'Arabic Name'
             ],
             [
-                'name'=>'email',
-                'data'=>'email',
-                'title'=>'Email'
+                'name'=>'color_name_en',
+                'data'=>'color_name_en',
+                'title'=>'English Name'
             ],
+            [
+                'name'=>'color',
+                'data'=>'color',
+                'title'=>'Color'
+            ],
+                      
             [
                 'name'=>'created_at',
                 'data'=>'created_at',
@@ -158,6 +168,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'Colors_' . date('YmdHis');
     }
 }

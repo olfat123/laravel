@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Country;
+use App\Model\Country;
 use Illuminate\Http\Request;
 use App\DataTables\CountriesDataTable;
 use Up;

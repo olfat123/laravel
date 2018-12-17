@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\City;
+use App\Model\City;
 use Yajra\DataTables\Services\DataTable;
 
 class CitiesDataTable extends DataTable

@@ -38,7 +38,7 @@
 			</div>
 			<div class="form-group">
 				{!! Form::label('country_id',_('admin.admin_state_country'))!!}
-				{!! Form::select('country_id',App\Country::pluck('country_name_en','id'),'',['class'=>'form-control country_id','placeholder'=>'..........'])!!}
+				{!! Form::select('country_id',App\Model\Country::pluck('country_name_en','id'),'',['class'=>'form-control country_id','placeholder'=>'..........'])!!}
 			</div>
 			<div class="form-group">
 				{!! Form::label('city_id',_('admin.admin_state_city')) !!}

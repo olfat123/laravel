@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\productsCategory;
+use App\Model\productsCategory;
 use Illuminate\Http\Request;
 use Up;
 use Storage;

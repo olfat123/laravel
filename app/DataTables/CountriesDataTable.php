@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Country;
+use App\Model\Country;
 use Yajra\DataTables\Services\DataTable;
 
 class CountriesDataTable extends DataTable

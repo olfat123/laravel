@@ -18,11 +18,11 @@
 			</div>
 			<div class="form-group">
 				{!! Form::label('country_id',_('admin.admin_state_country'))!!}
-				{!! Form::select('country_id',\App\Country::pluck('country_name_'.session('lang'),'id'),$state->country_id,['class'=>'form-control'])!!}
+				{!! Form::select('country_id',\App\Model\Country::pluck('country_name_'.session('lang'),'id'),$state->country_id,['class'=>'form-control'])!!}
 			</div>
 			<div class="form-group">
 				{!! Form::label('city_id',_('admin.admin_state_city'))!!}
-				{!! Form::select('city_id',\App\City::pluck('city_name_'.session('lang'),'id'),$state->city_id,['class'=>'form-control'])!!}
+				{!! Form::select('city_id',\App\Model\City::pluck('city_name_'.session('lang'),'id'),$state->city_id,['class'=>'form-control'])!!}
 			</div>
 			
 		

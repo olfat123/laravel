@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-
-use App\Model\product;
+use App\DataTables\ColorsDataTable;
+use App\Model\Color;
 use Illuminate\Http\Request;
-use App\DataTables\ProductsDataTable;
-class ProductController extends Controller
+
+class ColorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductsDataTable $product)
+    public function index(ColorsDataTable $color)
     {
-        return $product->render('admin.products.index',['title' =>'Products Control']);
+        return $color->render('admin.colors.index',['title' =>'colors Control']);
     }
 
     /**
@@ -42,10 +42,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\prodct  $prodct
+     * @param  \App\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function show(prodct $prodct)
+    public function show(Color $color)
     {
         //
     }
@@ -53,10 +53,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\prodct  $prodct
+     * @param  \App\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function edit(prodct $prodct)
+    public function edit(Color $color)
     {
         //
     }
@@ -65,10 +65,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\prodct  $prodct
+     * @param  \App\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, prodct $prodct)
+    public function update(Request $request, Color $color)
     {
         //
     }
@@ -76,10 +76,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\prodct  $prodct
+     * @param  \App\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function destroy(prodct $prodct)
+    public function destroy(Color $color)
     {
         //
     }

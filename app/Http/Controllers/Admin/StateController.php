@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
-use App\State;
-use App\City;
+use App\Model\State;
+use App\Model\City;
 use Illuminate\Http\Request;
 use App\DataTables\StatesDataTable;
 use Storage;
@@ -33,7 +33,7 @@ class StateController extends Controller
 
             if (request()->has('country_id')) {
                 $select = request()->has('select')? request('select'):"";
-                return Form::select('country_id',City::where('country_id',request('country_id'))->pluck('city_name_'.session('lang'),'id'),'$select',['class'=>'form-control']);
+                return Form::select('city_id',City::where('country_id',request('country_id'))->pluck('city_name_'.session('lang'),'id'),'$select',['class'=>'form-control']);
             }
         }
         return view('admin/states.create',['title'=> _('admin.addstate')]);
