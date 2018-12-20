@@ -8,25 +8,28 @@ if(!function_exists('setting')){
 
 if(!function_exists('load_cat')){
 	function load_cat($select = null){
-		$cats = \App\productsCategory::selectRaw('name_'.session('lang').' as text')->selectRaw('id as id')->selectRaw('parent as parent')->get(['text','parent','id']);
+		$cats = \App\Model\productsCategory::selectRaw('name_'.session('lang').' as text')
+		->selectRaw('id as id')
+		->selectRaw('parent as parent')
+		->get(['text','parent','id']);
 		$cat_arr = [];
 		foreach ($cats as $cat) {
-			$list = [];
-			if ($select !=null and $select == $cat->id) {
+			$list_arr = [];
+			if ($select !== null and $select == $cat->id) {
 				
-				$list['icon'] = '';
-				$list['li_attr'] = '';
-				$list['a_attr'] = '';
-				$list['children'] = [];
-				$list['state'] = [
-					'opened' =>true,
+				$list_arr['icon']    = '';
+				$list_arr['li_attr'] = '';
+				$list_arr['a_attr']  = '';
+				$list_arr['children'] = [];
+				$list_arr['state']   = [
+					'opened'   =>true,
 					'selected' =>true,
 				];
 			}	
 
-			$list['id'] = $cat->id;
-			$list['parent'] = $cat->parent !== null? $cat->paent : '#';
-			$list['text'] = $cat->text	;
+			$list_arr['id'] = $cat->id;
+			$list_arr['parent'] = $cat->parent > 0?$cat->parent:'#';
+			$list_arr['text'] = $cat->text	;
 			array_push($cat_arr, $list_arr);
 
 		}
@@ -44,6 +47,7 @@ if (!function_exists('lang')) {
 		if(session()->has('lang')){
 			return session('lang');
 		}else{
+			session()->put('lang',setting()->main_lang);
 			return setting()->main_lang;
 		}
 	}

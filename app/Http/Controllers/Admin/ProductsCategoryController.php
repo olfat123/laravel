@@ -25,7 +25,7 @@ class ProductsCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.productCategories.create',['title'=> _('admin.addcategory')]);
+        return view('admin.productCategories.create',['title'=> trans('admin.addcategory')]);
     }
 
     /**
@@ -92,7 +92,6 @@ class ProductsCategoryController extends Controller
     {
         $category = productsCategory::find($id);
         $title = _('admin.edit');
-        return view('admin.productsCategory.edit', compact('category','title'));
     }
 
     /**
@@ -116,7 +115,7 @@ class ProductsCategoryController extends Controller
             ],
             [],
             [
-              'name_ar' => _('admin.productCategory_name_ar'),
+             'name_ar' => _('admin.productCategory_name_ar'),
              'name_en' => _('admin.productCategory_name_en'),
              'description' => _('admin.productCategory_mob'),
              'keyword' => _('admin.productCategory_code'),

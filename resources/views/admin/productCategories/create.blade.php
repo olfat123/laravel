@@ -4,16 +4,26 @@
 	$(document).ready(function(){
 		$('#jstree').jstree({
 		  "core" : {
-		  	'data' : {!! load_cat() !!},
+		  	'data' : {!! load_cat(old('parent')) !!},
+		  
 		    "themes" : {
 		      "variant" : "large"
 		    }
 		  },
 		  "checkbox" : {
-		    "keep_selected_style" : true
+		    "keep_selected_style" : false
 		  },
-		  "plugins" : [ "wholerow", "checkbox" ]
+		  "plugins" : [ "wholerow" ]
 		});
+	});
+
+	$('#jstree').on('change.jstree', function(e,data){
+		var i , j , r = [];
+		for(i = 0, j = data.selected.length; i < j; i++)
+		{
+			r.push(data.instance.get_node(data.selected[i]).id);
+		}
+		$('.parent_id').val(r.join(', '));
 	});
 </script>
 	<div class="box">
@@ -25,32 +35,33 @@
 		<div class="box-body">
 			{!! Form::open(['url'=>'/admin/productsCategory','files'=>true])!!}
 			<div class="form-group">
-				{!! Form::label('name_ar',_('admin.name_ar'))!!}
-				{!! Form::text('name_ar','',['class'=>'form-control'])!!}
+				{!! Form::label('name_ar', trans('admin.name_ar'))!!}
+				{!! Form::text('name_ar',old('name_ar'),['class'=>'form-control'])!!}
 			</div>
 			<div class="form-group">
-				{!! Form::label('name_en',_('admin.name_en'))!!}
-				{!! Form::text('name_en','',['class'=>'form-control'])!!}
+				{!! Form::label('name_en', trans('admin.name_en'))!!}
+				{!! Form::text('name_en',old('name_en'),['class'=>'form-control'])!!}
 			</div>
 			<div class="clearfix"></div>
 				<div id="jstree"></div>
+				<input type="hidden" name="parent" class="parent_id" value="{{ old('parent') }}">
 			<div class="clearfix"></div>
 					
 			<div class="form-group">
-				{!! Form::label('description',_('admin.description'))!!}
-				{!! Form::text('description','',['class'=>'form-control'])!!}
+				{!! Form::label('description', trans('admin.description'))!!}
+				{!! Form::text('description',old('description'),['class'=>'form-control'])!!}
 			</div>
 			<div class="form-group">
-				{!! Form::label('keyword',_('admin.keyword'))!!}
+				{!! Form::label('keyword', trans('admin.keyword'))!!}
 				{!! Form::text('keyword','',['class'=>'form-control'])!!}
 			</div>
 			<div class="form-group">
-				{!! Form::label('icon',_('admin.icon'))!!}
+				{!! Form::label('icon', trans('admin.icon'))!!}
 				{!! Form::file('icon',['class'=>'form-control'])!!}
 			
 			</div>		
 		
-				{!! Form::submit(_('admin.save'),['class'=>'btn btn primary'])!!}
+				{!! Form::submit( trans('admin.save'),['class'=>'btn btn primary'])!!}
 				{!! Form::close()!!}
 			
 		</div>

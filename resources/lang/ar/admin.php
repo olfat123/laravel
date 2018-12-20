@@ -20,7 +20,13 @@ return [
 "sNext" => 'التالي',
 "sPrevious" => 'السابق',
 "sSortAscending" => 'ترتيب تصاعدي',
-"sSortDescending" => 'ترتيب تنازلي'
-
-
+"sSortDescending" => 'ترتيب تنازلي',
+"name_ar" => 'الاسم بالعربي',
+"name_en" => 'الاسم بالانجليزي',
+"description" => 'الوصف',
+"keyword"  => 'كلمات مفتاحية',
+"icon" => 'الشعار',
+"save" => 'حفظ',
+"addcategory" => 'إضافة تصنيف جديد',
+"productsCategory" => 'تصنيفات المنتجات',
 ];

@@ -58,10 +58,11 @@ class CountriesDataTable extends DataTable
                             ['extend' =>'csv','className' =>'btn btn-info','text'=>'CSV Page'],
                             ['extend' =>'excel','className' =>'btn btn-info','text'=>'Excel Page'],
                             ['extend' =>'reload','className' =>'btn btn-info','text'=>'Reload Page'],
-                            ['text' => '<i class="fa fa-plus"></i>  Add Country </a>','className' =>'btn btn-info','action'=>"function(){
+                            ['text' => '<i class="fa fa-plus"></i>  Add Country ','className' =>'btn btn-info','action'=>"function(){
 
                             	window.location.href='".\URL::current()."/create';
                             }"],
+                            ['text' => '<i class="fa fa-trash"></i>','className' =>'btn btn-danger delBtn'],
                         ]
                     ]);
     }
