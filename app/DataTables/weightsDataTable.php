@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Model\User;
+use App\Model\weight;
 use Yajra\DataTables\Services\DataTable;
 
-class UsersDataTable extends DataTable
+class WeightsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -16,8 +16,8 @@ class UsersDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('checkbox', 'admin.users.btn.checkbox')
-            ->addColumn('edit', '<a href="/admin/users/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
+            ->addColumn('checkbox', 'admin.weights.btn.checkbox')
+            ->addColumn('edit', '<a href="/admin/weights/{{$id}}/edit" class="btn btn-info"><i class="fa fa-edit"></i></a>')
             ->addColumn('delete', '<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a>')
             ->rawColumns([
                 'edit',
@@ -29,12 +29,12 @@ class UsersDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\User $model
+     * @param \App\Weight $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(User $model)
+    public function query(weight $model)
     {
-        return $model->newQuery()->select('id', 'name', 'email', 'created_at', 'updated_at');
+        return $model->newQuery()->select('id', 'weight_name_ar', 'weight_name_en', 'created_at', 'updated_at');
     }
 
     /**
@@ -58,45 +58,11 @@ class UsersDataTable extends DataTable
                             ['extend' =>'csv','className' =>'btn btn-info','text'=>'CSV Page'],
                             ['extend' =>'excel','className' =>'btn btn-info','text'=>'Excel Page'],
                             ['extend' =>'reload','className' =>'btn btn-info','text'=>'Reload Page'],
-                            ['text' => '<i class="fa fa-plus"></i>  Add User ','className' =>'btn btn-info','action'=>"function(){
+                            ['text' => '<i class="fa fa-plus"></i>  Add Weight ','className' =>'btn btn-info','action'=>"function(){
 
                             	window.location.href='".\URL::current()."/create';
                             }"],
                             ['text' => '<i class="fa fa-trash"></i>','className' =>'btn btn-danger delBtn'],
-                        ],
-                        'initComplete' => 'function () {
-                            this.api().columns([0,1,2,3,4]).every(function () {
-                                var column = this;
-                                var input = document.createElement("input");
-                                $(input).appendTo($(column.footer()).empty())
-                                .on(\'keyup\', function () {
-                                    column.search($(this).val(), false, false, true).draw();
-                                });
-                            });
-                        }',
-                        'language' => [ 
-                            "sProcessing" => __('admin.sProcessing'),
-                            "sLengthMenu" => __('admin.sLengthMenu'),
-                            "sZeroRecords" => __('admin.sZeroRecords'),
-                            "sEmptyTable" => __('admin.sEmptyTable'),
-                            "sInfo" => __('admin.sInfo'),
-                            "sInfoEmpty" => __('admin.sInfoEmpty'),
-                            "sInfoFiltered" => __('admin.sInfoFiltered'),
-                            "sInfoPostFix" => __('admin.sInfoPostFix'),
-                            "sSearch" => __('admin.sSearch'),
-                            "sUrl" => __('admin.sUrl'),
-                            "sInfoThousands" => __('admin.sInfoThousands'),
-                            "sLoadingRecords" => __('admin.sLoadingRecords'),
-                            "oPaginate" => [
-                                "sFirst" => __('admin.sFirst'),
-                                "sLast" => __('admin.sLast'),
-                                "sNext" => __('admin.sNext'),
-                                "sPrevious" => __('admin.sPrevious')
-                            ],
-                            "oAria" => [
-                                "sSortAscending" => __('admin.sSortAscending'),
-                                "sSortDescending" => __('admin.sSortDescending')
-                            ]
                         ]
                     ]);
     }
@@ -110,20 +76,30 @@ class UsersDataTable extends DataTable
     {
         return [
             [
+                'name'=>'checkbox',
+                'data'=>'checkbox',
+                'title'=>'<input type="checkbox" class="check_all" onclick="check_all()"/>',
+                'printable' => false,
+                'exportable' => false,
+                'orderable' => false,
+                'searchable'=> false
+            ],
+            [
                 'name'=>'id',
                 'data'=>'id',
                 'title'=>'ID'
             ],
             [
-                'name'=>'name',
-                'data'=>'name',
-                'title'=>'Name'
+                'name'=>'weight_name_ar',
+                'data'=>'weight_name_ar',
+                'title'=>'Arabic Name'
             ],
             [
-                'name'=>'email',
-                'data'=>'email',
-                'title'=>'Email'
-            ],
+                'name'=>'weight_name_en',
+                'data'=>'weight_name_en',
+                'title'=>'English Name'
+            ],   
+                       
             [
                 'name'=>'created_at',
                 'data'=>'created_at',
@@ -140,7 +116,7 @@ class UsersDataTable extends DataTable
                 'title'=>'Edit',
                 'printable' => false,
                 'exportable' => false,
-                'sortable' => false,
+                'orderable' => false,
                 'searchable'=> false
             ],
             [
@@ -149,7 +125,7 @@ class UsersDataTable extends DataTable
                 'title'=>'Delete',
                 'printable' => false,
                 'exportable' => false,
-                'sortable' => false,
+                'orderable' => false,
                 'searchable'=> false
             ],
 
@@ -164,6 +140,6 @@ class UsersDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Users_' . date('YmdHis');
+        return 'Weights_' . date('YmdHis');
     }
 }

@@ -309,6 +309,7 @@ logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
 
 <!-- Theme js-->
 <script src="{{ url('/') }}/assets/js/script.js" ></script>
+<script src="{{ url('/') }}/js/app.js" ></script>
 
 
 

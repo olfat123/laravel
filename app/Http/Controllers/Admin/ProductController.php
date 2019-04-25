@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-
 use App\Model\product;
 use Illuminate\Http\Request;
 use App\DataTables\ProductsDataTable;
+use Up;
 class ProductController extends Controller
 {
     /**
@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create',['title'=> _('admin.addproduct')]);
     }
 
     /**
@@ -36,16 +36,43 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->validate(request(),
+        ['Name' => 'required',         
+         'Price' => 'required',
+         'category_id' => 'required',
+         'Image' => 'sometimes|nullable|'.validate_image(),         
+
+        ],
+        [],
+        [
+         'Name' => _('admin.name'),
+         'Price' => _('admin.price'),
+         'category_id' => _('admin.category'),
+         'Image' => _('admin.productimage')
+        ]
+    );
+    if(request()->has('Image')){
+        
+        $data['Image'] = Up::upload([
+                'new_name' => 'product_image',
+                'file' => 'Image',
+                'path' => 'products',
+                'upload_type' => 'single',
+                'delete_file' => '',
+        ]);
+    }
+    product::create($data);
+    session()->flash('success',trans('admin.record_added'));
+    return redirect('/admin/products');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\prodct  $prodct
+     * @param  \App\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(prodct $prodct)
+    public function show(product $product)
     {
         //
     }

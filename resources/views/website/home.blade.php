@@ -77,7 +77,9 @@
     </div>
 </section>
 <!-- collection banner end -->
-
+<section id="app">
+    <example-component></example-component>
+</section>
 
 <!-- Paragraph-->
 <div class="title1  section-t-space">

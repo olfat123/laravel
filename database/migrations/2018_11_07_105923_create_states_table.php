@@ -20,7 +20,7 @@ class CreateStatesTable extends Migration
             $table->integer('country_id')->unsigned();  
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');  
             $table->integer('city_id')->unsigned();  
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');         
+            //$table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');         
             $table->timestamps();
         });
     }
